@@ -23,6 +23,17 @@ namespace KeyboardMenuDemo
         public string TopLine;
         public string BottomLine;
 
+        public String topLine {
+            get { return TopLine; }
+            set { TopLine = value; }
+        }
+
+        public String bottomLine
+        {
+            get { return BottomLine; }
+            set { BottomLine = value; }
+        }
+
         public Field()
         {
             Gdata = FieldSettings.SetOptions();
@@ -63,8 +74,6 @@ namespace KeyboardMenuDemo
 
     public class Rackets
     {
-        Field field = new Field();
-        //Rackets
         public int racketLength = 6;
         const char racketTile = '-';
         public int leftRacketHeight = 0;
@@ -72,7 +81,6 @@ namespace KeyboardMenuDemo
 
         public void PrintTheRacket()
         {
-            //Print the rackets
             for (int i = 1; i < racketLength; i++)
             {
                 Console.SetCursorPosition(i + 1 + leftRacketHeight, Field.fieldWidth);
@@ -85,7 +93,6 @@ namespace KeyboardMenuDemo
 
     public class Ball
     {
-        //Ball
         public int ballX = Field.fieldLength / 2;
         public int ballY = Field.fieldWidth / 2;
         public char ballTile = 'o';
@@ -112,7 +119,7 @@ namespace KeyboardMenuDemo
         public int scoreboardY = Field.fieldWidth + 1;
     }
 
-    public class Starter : Settings
+    public class Starter
     {
         public static void GameProcess()
         {
@@ -276,9 +283,6 @@ namespace KeyboardMenuDemo
         outer:;
             Console.Clear();
             Console.SetCursorPosition(0, 0);
-            StreamWriter sw = new StreamWriter("C:\\Users\\sanmo\\source\\repos\\Volleyball\\options.txt");
-            sw.WriteLine(" ");
-            sw.Close();
             if (points.rightPlayerPoints == 10)
             {
                 Console.WriteLine($"Игрок справа первым набрал {Field.MaxScore} очков");

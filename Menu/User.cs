@@ -1,16 +1,6 @@
 ﻿using static System.Console;
 namespace KeyboardMenuDemo
 {
-    class Program
-    {
-        public static void Main()
-        {
-            Console.CursorVisible = false;
-            Game myGame = new Game();
-            Settings mySettings = new Settings();
-            myGame.Start();
-        }
-    }
 
     class Game
     {
@@ -38,7 +28,8 @@ namespace KeyboardMenuDemo
                         {
                             Console.WriteLine("Нужно выбрать настройки");
                             Thread.Sleep(2000);
-                            Options();
+                            string[] opt = new string[0];
+                            MenuOptions2(ref opt);
                         }
                         else
                         {
@@ -47,7 +38,8 @@ namespace KeyboardMenuDemo
                         }
                         break;
                     case 1:
-                        Options();
+                        string[] op = new string[0];
+                        MenuOptions(out op);
                         break;
                     case 2:
                         k = false;
@@ -71,12 +63,19 @@ namespace KeyboardMenuDemo
 
             }
         }
-        public void Options()
+        public void MenuOptions(out string[] options)
         {
-            string[] options = { "Использовать настройки по умолчанию ", "Использовать свои настройки" };
+            string[] option = { "Использовать настройки по умолчанию ", "Использовать свои настройки" };
+            options = option;
             RunOptions(options);
         }
 
+        public void MenuOptions2(ref string[] options)
+        {
+            string[] option = { "Использовать настройки по умолчанию ", "Использовать свои настройки" };
+            options = option;
+            RunOptions(options);
+        }
         private void ExitGame()
         {
             WriteLine("Мы рассчитывали что хы хотя бы попробуете поиграть(");
